@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Combantant
+public abstract class Combantant : MonoBehaviour
 {
     public string Name { get; protected set; }
     public float Health { get; protected internal set; }

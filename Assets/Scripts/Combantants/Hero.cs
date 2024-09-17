@@ -6,7 +6,22 @@ public abstract class Hero : Combantant
 {
    public int Level { get; protected set; }
    public int Experience { get; protected set; }
-   
-   
-   
+
+   public void GainXp(int xp)
+   {
+      Experience += xp;
+      if (Experience >= 5)
+      {
+         LevelUp();
+         Experience = 0;
+      }
+   }
+
+   private void LevelUp()
+   {
+      Level++;
+      Health *= 1.1f;
+      AttackPower *= 1.1f;
+      Debug.Log($"{Name } Leveled Up");
+   }
 }
