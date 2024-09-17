@@ -115,7 +115,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1443187526809196879, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.28
       objectReference: {fileID: 0}
     - target: {fileID: 1443187526809196879, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -153,13 +153,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2995264296603324211, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995264296603324211, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210142601651558737, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210142601651558737, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7210142601651558737, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 8520002884897725305, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
       propertyPath: m_Name
-      value: RangeHero Variant
+      value: RangeHero
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870159017678680405, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870159017678680405, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -189,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9569cd9e6a6914485b75205e85a23fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _combantantConfig: {fileID: 11400000, guid: 733856b48520f4a9c847798ece67a0ea, type: 2}
 --- !u!4 &8826187099206668722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1443187526809196879, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}

@@ -32,14 +32,6 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
-    - Cinemachine
-    - GameAnalyticsSDK
-    - GameUtils.Scripts
-    - Lofelt.NiceVibrations
-    - MaxSdk.Scripts
-    - Siccity.SerializableCallback
-    - StompyRobot.SRDebugger
-    - StompyRobot.SRF
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

@@ -6,13 +6,20 @@ using UnityEngine.UI;
 
 public class BasicHealthController : MonoBehaviour, IHealthController
 {
+    [SerializeField] private Transform _healthBarTransform;
     [SerializeField] private Image _healthBarImage;
     private Combantant _combantant;
 
+    private Camera _mainCamera;
     private void Awake()
     {
         _combantant = GetComponent<Combantant>();
-        
+        _mainCamera = Camera.main;
+    }
+
+    private void LateUpdate()
+    {
+        _healthBarTransform.LookAt(_mainCamera.transform);
     }
 
     public void Die()

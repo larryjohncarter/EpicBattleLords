@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Hero : Combantant
 {
+   [SerializeField] private Combantant_SO _combantantConfig;
+   public Combantant_SO CombantantConfig => _combantantConfig;
    public int Level { get; protected set; }
    public int Experience { get; protected set; }
 
