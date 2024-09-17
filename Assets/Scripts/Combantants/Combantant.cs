@@ -7,8 +7,7 @@ public abstract class Combantant : MonoBehaviour
     public string Name { get; protected set; }
     public float Health { get; protected internal set; }
     public float AttackPower { get; protected set; }
-
-
+    
     protected abstract void Attack(Combantant target);
     
     

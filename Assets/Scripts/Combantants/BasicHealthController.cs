@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasicHealthController : MonoBehaviour, IHealthController
 {
+    [SerializeField] private Image _healthBarImage;
     private Combantant _combantant;
 
     private void Awake()
@@ -26,6 +28,7 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     {
         _combantant.Health -= damage;
         if (_combantant.Health < 0) _combantant.Health = 0;
+        
         Debug.Log($"{_combantant.Name} took {damage} damage.");
     }
 
@@ -33,4 +36,10 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     {
         return _combantant.Health > 0;
     }
+
+    private void HealthBarState()
+    {
+        
+    }
+    
 }
