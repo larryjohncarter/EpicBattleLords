@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameSettings_SO : ScriptableObject
 {
     public int MaxSelectedHeroAmount;
+    public Vector3 HeroPopUpOffset;
 }

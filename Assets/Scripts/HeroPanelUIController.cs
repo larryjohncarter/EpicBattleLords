@@ -13,7 +13,9 @@ public class HeroPanelUIController : MonoBehaviour
     public Button Button => _button;
     public static Action OnHeroSelection;
 
-    private Combantant_SO _combantant;
+    public Combantant_SO Combantant { get; private set;}
+    public Hero Hero { get; private set; }
+    
 
     private void OnEnable()
     {
@@ -33,7 +35,11 @@ public class HeroPanelUIController : MonoBehaviour
 
     public void SetCombantant(Hero hero)
     {
-        _combantant = hero.CombantantConfig;
+        Combantant = hero.CombantantConfig;
+    }
+    public void SetHero(Hero hero)
+    {
+        Hero = hero;
     }
     
     public void SetButtonListener(Action eventInvoke)
@@ -47,7 +53,7 @@ public class HeroPanelUIController : MonoBehaviour
 
     private void SetImageBorderColor()
     {
-        _backGroundImage.color = _combantant.IsSelected ? Color.green : Color.black;
+        _backGroundImage.color = Combantant.IsSelected ? Color.green : Color.black;
     }
     
 }

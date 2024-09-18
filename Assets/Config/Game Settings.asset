@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Game Settings
   m_EditorClassIdentifier: 
   MaxSelectedHeroAmount: 3
+  HeroPopUpOffset: {x: 15, y: 0, z: 0}

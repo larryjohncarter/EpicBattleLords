@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HeroCollectionUI : MonoBehaviour
 {
@@ -44,6 +41,7 @@ public class HeroCollectionUI : MonoBehaviour
             var heroPanelUIController = newHeroButton.GetComponent<HeroPanelUIController>();
             heroPanelUIController.SetNameText(hero.CombantantConfig.Name);
             heroPanelUIController.SetCombantant(hero);
+            heroPanelUIController.SetHero(hero);
             if (hero.CombantantConfig.IsUnlocked)
             {
                 heroPanelUIController.SetButtonListener(()=>ToggleHeroSelection(hero));
@@ -72,6 +70,4 @@ public class HeroCollectionUI : MonoBehaviour
             HeroPanelUIController.OnHeroSelection.Invoke();
         }
     }
-    
-    
 }
