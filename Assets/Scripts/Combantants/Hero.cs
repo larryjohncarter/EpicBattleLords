@@ -13,6 +13,11 @@ public abstract class Hero : Combantant
 
    private void Start()
    {
+      UpdateStats();
+   }
+
+   public void UpdateStats()
+   {
       Level = _combantantConfig.BaseLevel;
       AttackPower = _combantantConfig.BaseAttackPower;
    }
