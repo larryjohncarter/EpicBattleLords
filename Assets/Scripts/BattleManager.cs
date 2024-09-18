@@ -23,7 +23,6 @@ public class BattleManager : MonoBehaviour
                 GameObject heroInstance = Instantiate(_selectedHeroes[i].CombantantConfig.ModelPrefab,_heroSpawnPoints[i].position,Quaternion.identity);
             }
         }
-        Debug.Log($"1");
         EventManager.InvokeOnBattleInitiated(false);
     }
 }

@@ -39,5 +39,5 @@ public abstract class Hero : Combantant
 [System.Serializable]
 public class HeroSelection
 {
-   public bool IsSelected = false;  // Runtime data for hero selection
+   [System.NonSerialized]  public bool IsSelected;  
 }

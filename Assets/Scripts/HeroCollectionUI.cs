@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class HeroCollectionUI : MonoBehaviour
 {
     [SerializeField] private GameObject _heroPanelPrefab;
     [SerializeField] private Transform _heroSelectionPanel;
-    [SerializeField] private Transform _heroSelectionCanvas;
+    [SerializeField] private List<Transform> _uiToToggle = new();
     [SerializeField] private TextMeshProUGUI _selectedHeroCountText;
     
     private HeroCollectionManager _heroCollectionManager;
@@ -65,7 +66,10 @@ public class HeroCollectionUI : MonoBehaviour
     private void ToggleHeroSelectionCanvas(bool on)
     {
         var targetScale = on ? Vector3.one : Vector3.zero;
-        _heroSelectionCanvas.DOScale(targetScale, 0.2f);
+        foreach (var ui in _uiToToggle)
+        {
+            ui.DOScale(targetScale, 0.2f);
+        }
     }
 
 
