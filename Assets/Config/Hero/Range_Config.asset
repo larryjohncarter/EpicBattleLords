@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: DeadArrow
   MaxHealth: 0
+  BaseAttackPower: 5
+  BaseLevel: 1
   IsUnlocked: 1
   IsSelected: 0
