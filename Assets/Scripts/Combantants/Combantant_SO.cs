@@ -10,5 +10,6 @@ public class Combantant_SO : ScriptableObject
     public int BaseLevel;
     [Header("Selections")]
     public bool IsUnlocked;
-    public bool IsSelected;
+    [Header("Prefab")] 
+    public GameObject ModelPrefab;
 }

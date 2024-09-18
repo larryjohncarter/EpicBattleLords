@@ -53,7 +53,7 @@ public class HeroPanelUIController : MonoBehaviour
 
     private void SetImageBorderColor()
     {
-        _backGroundImage.color = Combantant.IsSelected ? Color.green : Color.black;
+        _backGroundImage.color = Hero.HeroSelection.IsSelected ? Color.green : Color.black;
     }
     
 }

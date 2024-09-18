@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Hero : Combantant
 {
    [SerializeField] private Combantant_SO _combantantConfig;
+   public HeroSelection HeroSelection { get; set; }
    public Combantant_SO CombantantConfig => _combantantConfig;
    public int Level { get; protected set; } = 1;
    public int Experience { get; protected set; }
@@ -33,4 +34,10 @@ public abstract class Hero : Combantant
       AttackPower = _combantantConfig.BaseAttackPower * (1 + (Level * 0.1f));  //10% bonus per level
       Debug.Log($"{Name } Leveled Up");
    }
+}
+
+[System.Serializable]
+public class HeroSelection
+{
+   public bool IsSelected = false;  // Runtime data for hero selection
 }

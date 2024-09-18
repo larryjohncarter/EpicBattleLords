@@ -18,3 +18,4 @@ MonoBehaviour:
   BaseLevel: 1
   IsUnlocked: 1
   IsSelected: 0
+  ModelPrefab: {fileID: 9060163515666997395, guid: 537bd65b1486b4e36b7c59fb972b3718, type: 3}

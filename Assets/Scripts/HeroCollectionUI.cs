@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public class HeroCollectionUI : MonoBehaviour
 {
     [SerializeField] private GameObject _heroPanelPrefab;
     [SerializeField] private Transform _heroSelectionPanel;
+    [SerializeField] private Transform _heroSelectionCanvas;
     [SerializeField] private TextMeshProUGUI _selectedHeroCountText;
+    
     private HeroCollectionManager _heroCollectionManager;
 
     public static Action<int,int> OnHeroAmountChange;
@@ -14,11 +17,14 @@ public class HeroCollectionUI : MonoBehaviour
     private void OnEnable()
     {
         OnHeroAmountChange += SelectedHeroAmount;
+        EventManager.OnBattleInitiated += ToggleHeroSelectionCanvas;
     }
 
     private void OnDisable()
     {
         OnHeroAmountChange -= SelectedHeroAmount;
+        EventManager.OnBattleInitiated -= ToggleHeroSelectionCanvas;
+
     }
 
     private void Awake()
@@ -56,10 +62,16 @@ public class HeroCollectionUI : MonoBehaviour
         _selectedHeroCountText.text = $"{currentAmount}/{maxAmount}";
     }
 
+    private void ToggleHeroSelectionCanvas(bool on)
+    {
+        var targetScale = on ? Vector3.one : Vector3.zero;
+        _heroSelectionCanvas.DOScale(targetScale, 0.2f);
+    }
+
 
     private void ToggleHeroSelection(Hero hero)
     {
-        if (hero.CombantantConfig.IsSelected)
+        if (hero.HeroSelection.IsSelected)
         {
             _heroCollectionManager.DeselectHeroFromBattle(hero);
             HeroPanelUIController.OnHeroSelection.Invoke();
