@@ -13,10 +13,15 @@ public abstract class Combantant : MonoBehaviour
         get => _combantantConfig;
         set => _combantantConfig = value;
     }
+
+    public Transform CombantantTargetPos => _combantantTargetPos;
     public string Name { get; protected set; }
     public float AttackPower { get; protected set; }
 
-    public abstract void Attack(Combantant target);
+    public virtual void Attack(Combantant target)
+    {
+        BattleManager.Instance.IsHeroTurn = false;
+    }
     
     
 }

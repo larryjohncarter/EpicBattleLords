@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public static class EventManager
 {
@@ -13,4 +10,10 @@ public static class EventManager
 
    public static event Action OnHeroSelectionMaxAmount;
    public static void InvokeOnHeroSelectionMaxAmount() => OnHeroSelectionMaxAmount?.Invoke();
+
+   public static event Action<bool> OnTurnChangeTextSet;
+   public static void InvokeOnTurnChangeTextSet(bool isPlayerturn) => OnTurnChangeTextSet?.Invoke(isPlayerturn);
+
+   public static event Action<bool,bool> OnTurnHudPanelState;
+   public static void InvokeOnTurnHudPanelState(bool state, bool instant) => OnTurnHudPanelState?.Invoke(state,instant);
 }

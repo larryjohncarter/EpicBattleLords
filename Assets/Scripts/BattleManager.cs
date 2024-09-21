@@ -16,16 +16,18 @@ public class BattleManager : SingletonBehaviour<BattleManager>
     private Hero _selectedHero;  // Hero Selected by  player to attack
     private Enemy _enemyInstance;
     private Coroutine _battleFlowCoroutine;
+
+    public bool IsHeroTurn
+    {
+        get => _isHeroTurn;
+        set => _isHeroTurn = value;
+    }
     void Start()
     {
         _selectedHeroes = HeroCollectionManager.Instance.SelectedHeroes;
         _battleFlowCoroutine = StartCoroutine(TurnBasedCombat());
     }
-
-  
-
-   
-
+    
     public void SpawnCombatants()
     {
         for (var i = 0; i < _selectedHeroes.Count; i++)
@@ -41,6 +43,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         var enemy = Instantiate(_enemyPrefab, _enemySpawnPoint.position, Quaternion.identity);
         _enemyInstance = enemy.GetComponent<EnemyHero>();
         EventManager.InvokeOnBattleInitiated(false);
+        EventManager.InvokeOnTurnHudPanelState(true,false);
     }
 
     public void SelectHeroForAttack(Hero hero)
@@ -55,21 +58,26 @@ public class BattleManager : SingletonBehaviour<BattleManager>
     {
         while (true)
         {
+            UpdateTurnText();
             yield return new WaitUntil(() => _selectedHero != null && _isHeroTurn);
             yield return HeroAttack(_selectedHero);
             _selectedHero = null;
-            _isHeroTurn = false;
+            yield return new WaitUntil(() => !_isHeroTurn);
+            UpdateTurnText();
             yield return EnemyAttack();
-            _isHeroTurn = true;
 
             if (CheckForWinOrLose())
             {
-                Debug.Log($"Hey");
                 break;
             }
 
             yield return new WaitForSeconds(1f);
         }
+    }
+    
+    private void UpdateTurnText()
+    {
+        EventManager.InvokeOnTurnChangeTextSet(_isHeroTurn);
     }
 
     IEnumerator HeroAttack(Hero hero)
@@ -84,6 +92,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         if (aliveHeroes.Count > 0)
         {
             Hero targetHero = aliveHeroes[Random.Range(0, aliveHeroes.Count)];
+            _enemyInstance.Attack(targetHero);
             yield return new WaitForSeconds(1f);
         }
     }
