@@ -1992,7 +1992,6 @@ MonoBehaviour:
   - {fileID: 3258048375161254442, guid: 4424ed1a76c094631b92161a2aa6b292, type: 3}
   - {fileID: -6421013819683529937, guid: 5f06554456b884d9db1b7de0bf7406c7, type: 3}
   - {fileID: 2611317818778232037, guid: 537bd65b1486b4e36b7c59fb972b3718, type: 3}
-  - {fileID: 3258048375161254442, guid: 9b949dc6914fb6b45a32c55d958bf40d, type: 3}
 --- !u!114 &1456369036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,6 +2211,9 @@ MonoBehaviour:
   pools:
   - id: 0
     prefab: {fileID: 1485987801625442810, guid: 0203a37b0f047a74794f252f4783d6b2, type: 3}
+    size: 5
+  - id: 1
+    prefab: {fileID: 8139453687319804719, guid: 576518616b2fd0c4b9b417895a88a179, type: 3}
     size: 5
 --- !u!4 &1730014157
 Transform:
