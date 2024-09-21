@@ -5,7 +5,8 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _heroSpawnPoints = new();
-
+    [SerializeField] private Transform _enemySpawnPoint;
+    [SerializeField] private GameObject _enemyPrefab;
     private List<Hero> _selectedHeroes;
 
     void Start()
@@ -14,15 +15,17 @@ public class BattleManager : MonoBehaviour
         
     }
 
-    public void SpawnHeroes()
+    public void SpawnCombatants()
     {
-        for (int i = 0; i < _selectedHeroes.Count; i++)
+        for (var i = 0; i < _selectedHeroes.Count; i++)
         {
             if (i < _heroSpawnPoints.Count)
             {
-                GameObject heroInstance = Instantiate(_selectedHeroes[i].CombantantConfig.ModelPrefab,_heroSpawnPoints[i].position,Quaternion.identity);
+                var heroInstance = Instantiate(_selectedHeroes[i].CombantantConfig.ModelPrefab,_heroSpawnPoints[i].position,Quaternion.identity);
             }
         }
+
+        var enemy = Instantiate(_enemyPrefab, _enemySpawnPoint.position, Quaternion.identity);
         EventManager.InvokeOnBattleInitiated(false);
     }
 }
