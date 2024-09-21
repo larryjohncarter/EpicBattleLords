@@ -56,8 +56,6 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     {
         Health -= damage;
         if (Health < 0) Health = 0;
-        
-        Debug.Log($"{_combantant.Name} took {damage} damage.");
     }
 
     public bool IsAlive()

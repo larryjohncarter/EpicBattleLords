@@ -1,30 +1,60 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    #region InputHandling
+    private float _holdTime;
+    private bool _isHolding;
+    private bool _popUpShown;
+    private Camera _mainCamera;
+    private Hero _heldHero;
+
+    private const float HoldDuration = 3f;
+    private HeroPopUpController _heroPopUpController;
+    private void Start()
+    {
+        _mainCamera = Locator.Instance.MainCamera;
+        _heroPopUpController = Locator.Instance.HeroPopUpController;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             DetectHeroClick();
         }
+
+        if (Input.GetMouseButton(0) && _heldHero != null)
+        {
+            _holdTime += Time.deltaTime;
+            if (_holdTime >= HoldDuration)
+            {
+                _isHolding = true;
+                _heroPopUpController.SetHeroInfo(_heldHero.CombantantConfig,_heldHero,Input.mousePosition);
+                _heroPopUpController.Toggle(true); 
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (_isHolding)
+            {
+                ResetHold();
+            }
+            else
+            {
+                if (_heldHero != null)
+                {
+                    BattleManager.Instance.SelectHeroForAttack(_heldHero);
+                }
+            }
+        }
     }
     private void DetectHeroClick(Vector2? touchPosition = null)
     {
-        Vector2 inputPosition;
-        if (touchPosition == null)
-        {
-            inputPosition = Input.mousePosition;
-        }
-        else
-        {
-            inputPosition = touchPosition.Value;
-        }
-
-        Ray ray = Camera.main.ScreenPointToRay(inputPosition);
+        var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
@@ -33,11 +63,21 @@ public class InputManager : MonoBehaviour
 
             if (hero != null)
             {
-                BattleManager.Instance.SelectHeroForAttack(hero);
+                _heldHero = hero;
+                _holdTime = 0f;
             }
         }
     }
-    
 
-    #endregion
+    private void ResetHold()
+    {
+        if (_heldHero != null)
+        {
+            _heroPopUpController.ToggleOffAfterWhile();
+        }
+
+        _heldHero = null;
+        _isHolding = false;
+        _holdTime = 0;
+    }
 }

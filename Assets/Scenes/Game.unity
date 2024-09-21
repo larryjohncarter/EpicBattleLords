@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 399846391}
   - component: {fileID: 399846390}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Locator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5729aab760d1478e75c280e1ca34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSettings: {fileID: 11400000, guid: 061fa0ea2543eea4fa398b8610772ed7, type: 2}
+  GameSettings: {fileID: 11400000, guid: 061fa0ea2543eea4fa398b8610772ed7, type: 2}
+  HeroPopUpController: {fileID: 810494937}
+  MainCamera: {fileID: 963194227}
 --- !u!4 &399846391
 Transform:
   m_ObjectHideFlags: 0
@@ -1177,6 +1179,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724247969}
   m_CullTransparentMesh: 1
+--- !u!114 &810494937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5024308419428183620, guid: a6dd7163285948349b5d080b5c641f8e, type: 3}
+  m_PrefabInstance: {fileID: 583659688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f77e69691cb2945a4f91587f20c862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &882609681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2023,6 @@ MonoBehaviour:
   - {fileID: 247514666}
   - {fileID: 1736857726}
   - {fileID: 1661923617}
-  - {fileID: 523100835}
   _selectedHeroCountText: {fileID: 390533198}
 --- !u!4 &1456369037
 Transform:

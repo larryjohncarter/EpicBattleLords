@@ -12,7 +12,7 @@ public class HeroButton : MonoBehaviour
 
     void Start()
     {
-        _heroPopUpController = FindObjectOfType<HeroPopUpController>();
+        _heroPopUpController = Locator.Instance.HeroPopUpController;
         _heroPanelUIController = GetComponentInParent<HeroPanelUIController>();
     }
 

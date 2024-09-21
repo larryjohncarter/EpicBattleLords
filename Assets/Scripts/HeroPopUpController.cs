@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class HeroPopUpController : MonoBehaviour
 {
@@ -26,7 +23,7 @@ public class HeroPopUpController : MonoBehaviour
         _attackPowerText.text = hero.AttackPower.ToString();
         _experienceText.text = hero.Experience.ToString();
 
-        var offset = GameManager.Instance.GameSettings.HeroPopUpOffset;
+        var offset = Locator.Instance.GameSettings.HeroPopUpOffset;
         transform.position = position + offset;
     }
 

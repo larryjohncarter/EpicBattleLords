@@ -10,7 +10,7 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
     public List<Hero> SelectedHeroes => _selectedHeroes;
     private void Start()
     {
-       HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,GameManager.Instance.GameSettings.MaxSelectedHeroAmount);
+       HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
        EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
 
     }
@@ -21,7 +21,7 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
         {
             _selectedHeroes.Add(hero);
             hero.HeroSelection.IsSelected = true;
-            HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,GameManager.Instance.GameSettings.MaxSelectedHeroAmount);
+            HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
             EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
         }
         else
@@ -37,7 +37,7 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
         {
             _selectedHeroes.Remove(hero);
             hero.HeroSelection.IsSelected = false;
-            HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,GameManager.Instance.GameSettings.MaxSelectedHeroAmount);
+            HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
             EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
 
         }
