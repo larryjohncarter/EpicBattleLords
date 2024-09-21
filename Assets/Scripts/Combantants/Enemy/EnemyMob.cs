@@ -12,7 +12,6 @@ public class EnemyMob : Enemy
         var targetHealthController = target.GetComponent<IHealthController>();
         transform.DOMove(targetPos.position, 1f).OnComplete(() =>
         {
-            Debug.Log($"Enemy Attack Power: {(int)AttackPower}");
             targetHealthController.TakeDamage((int)AttackPower);
             StartCoroutine(TempReturnBackToPos());
         });

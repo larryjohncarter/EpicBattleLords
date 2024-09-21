@@ -69,8 +69,6 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     private void HealthBar()
     {
         var percentage = Health / MaxHealth;
-        Debug.Log(percentage);
         _healthBarImage.DOFillAmount(percentage, 0.5f);
     }
-    
 }

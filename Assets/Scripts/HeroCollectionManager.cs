@@ -4,7 +4,6 @@ using UnityEngine;
 public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
 {
     [SerializeField] private List<Hero> _allHeroes = new();
-    private const int maxHeroes = 10;
     private List<Hero> _selectedHeroes = new();
 
     public List<Hero> SelectedHeroes => _selectedHeroes;
