@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e366ffb5064545aa2479e78a75d5f6, type: 3}
   m_Name: Range_Config 1
   m_EditorClassIdentifier: 
+  Name: 
   MaxHealth: 0
-  IsUnlocked: 0
+  BaseAttackPower: 0
+  BaseLevel: 0
+  IsUnlocked: 1
+  ModelPrefab: {fileID: 0}
