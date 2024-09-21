@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WizardHero : Hero
 {
-    // Start is called before the first frame update
+    
+    
     void Start()
     {
         
@@ -13,11 +14,11 @@ public class WizardHero : Hero
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    protected override void Attack(Combantant target)
+
+    public override void Attack(Combantant target)
     {
-        
+        Debug.Log($"Wizard  Attacked: {target}");
     }
 }

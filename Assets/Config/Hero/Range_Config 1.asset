@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Range_Config 1
   m_EditorClassIdentifier: 
   Name: 
-  MaxHealth: 0
+  MaxHealth: 50
   BaseAttackPower: 0
   BaseLevel: 0
   IsUnlocked: 1

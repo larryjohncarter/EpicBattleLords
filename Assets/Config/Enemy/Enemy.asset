@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   Name: 
-  MaxHealth: 0
+  MaxHealth: 250
   BaseAttackPower: 0
   BaseLevel: 0
   IsUnlocked: 0

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Warrior_Config
   m_EditorClassIdentifier: 
   Name: Warrior
-  MaxHealth: 0
+  MaxHealth: 75
   BaseAttackPower: 5
   BaseLevel: 1
   IsUnlocked: 1
-  IsSelected: 0
   ModelPrefab: {fileID: 449012480492617595, guid: 5f06554456b884d9db1b7de0bf7406c7, type: 3}

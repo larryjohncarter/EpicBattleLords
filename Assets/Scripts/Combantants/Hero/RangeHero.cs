@@ -11,11 +11,11 @@ public class RangeHero : Hero
 
     void Update()
     {
-        
     }
 
-    protected override void Attack(Combantant target)
+    public override void Attack(Combantant target)
     {
-        
+        Debug.Log($"Ranger  Attacked: {target}");
+
     }
 }

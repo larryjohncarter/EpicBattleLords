@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHero : Hero
+public class EnemyHero : Enemy
 {
     
     void Start()
@@ -15,7 +15,7 @@ public class EnemyHero : Hero
         
     }
 
-    protected override void Attack(Combantant target)
+    public override void Attack(Combantant target)
     {
         
     }

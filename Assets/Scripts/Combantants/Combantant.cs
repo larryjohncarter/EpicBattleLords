@@ -4,11 +4,17 @@ using UnityEngine;
 
 public abstract class Combantant : MonoBehaviour
 {
+    [SerializeField] private Combantant_SO _combantantConfig;
+
+    public Combantant_SO CombantantConfig
+    {
+        get => _combantantConfig;
+        set => _combantantConfig = value;
+    }
     public string Name { get; protected set; }
-    public float Health { get; protected internal set; }
     public float AttackPower { get; protected set; }
-    
-    protected abstract void Attack(Combantant target);
+
+    public abstract void Attack(Combantant target);
     
     
 }

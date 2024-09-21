@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Range_Config
   m_EditorClassIdentifier: 
   Name: DeadArrow
-  MaxHealth: 0
+  MaxHealth: 30
   BaseAttackPower: 5
   BaseLevel: 1
   IsUnlocked: 1
-  IsSelected: 0
   ModelPrefab: {fileID: 1749349886442345348, guid: 4424ed1a76c094631b92161a2aa6b292, type: 3}
