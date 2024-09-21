@@ -1,25 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Hero : Combantant
 {
-   
    public HeroSelection HeroSelection { get; set; }
    public int Level { get; private set; } = 1;
    public int Experience { get; private set; }
-
-   protected void Awake()
-   {
-   }
    
    private void Start()
    {
-      UpdateStats();
+      Initialize();
    }
    
-   public void UpdateStats()
+   public void Initialize()
    {
       Level = CombantantConfig.BaseLevel;
       AttackPower = CombantantConfig.BaseAttackPower;

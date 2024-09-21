@@ -17,6 +17,7 @@ public abstract class Combantant : MonoBehaviour
     public string Name { get; protected set; }
     public float AttackPower { get; protected set; }
 
+
     public virtual void Attack(Combantant target)
     {
         BattleManager.Instance.IsHeroTurn = false;

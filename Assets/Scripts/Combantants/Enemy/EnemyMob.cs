@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class EnemyHero : Enemy
+public class EnemyMob : Enemy
 {
-    private Vector3 _originalPos;
-
-    private void Start()
-    {
-        _originalPos = transform.position;
-    }
     
     public override void Attack(Combantant target)
     {
@@ -18,7 +12,7 @@ public class EnemyHero : Enemy
         var targetHealthController = target.GetComponent<IHealthController>();
         transform.DOMove(targetPos.position, 1f).OnComplete(() =>
         {
-            //TODO: Play a small animation
+            Debug.Log($"Enemy Attack Power: {(int)AttackPower}");
             targetHealthController.TakeDamage((int)AttackPower);
             StartCoroutine(TempReturnBackToPos());
         });

@@ -41,7 +41,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         }
 
         var enemy = Instantiate(_enemyPrefab, _enemySpawnPoint.position, Quaternion.identity);
-        _enemyInstance = enemy.GetComponent<EnemyHero>();
+        _enemyInstance = enemy.GetComponent<EnemyMob>();
         EventManager.InvokeOnBattleInitiated(false);
         EventManager.InvokeOnTurnHudPanelState(true,false);
     }

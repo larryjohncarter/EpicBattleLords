@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: THE BOSS
   MaxHealth: 250
-  BaseAttackPower: 0
+  BaseAttackPower: 50
   BaseLevel: 0
   IsUnlocked: 0
   ModelPrefab: {fileID: 0}

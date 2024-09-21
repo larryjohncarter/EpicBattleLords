@@ -17,7 +17,7 @@ public class HeroPopUpController : MonoBehaviour
 
     public void SetHeroInfo(Combantant_SO combantant, Hero hero, Vector3 position)
     {
-        hero.UpdateStats();
+        hero.Initialize();
         _nameText.text = combantant.Name;
         _levelText.text = hero.Level.ToString();
         _attackPowerText.text = hero.AttackPower.ToString();

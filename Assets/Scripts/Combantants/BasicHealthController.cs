@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class BasicHealthController : MonoBehaviour, IHealthController
         {
             health = value;
             //TODO:Set HealthBar percentages  here
+            HealthBar();
+            
         }
     }
 
@@ -63,9 +66,11 @@ public class BasicHealthController : MonoBehaviour, IHealthController
         return Health > 0;
     }
 
-    private void HealthBarState()
+    private void HealthBar()
     {
-        
+        var percentage = Health / MaxHealth;
+        Debug.Log(percentage);
+        _healthBarImage.DOFillAmount(percentage, 0.5f);
     }
     
 }

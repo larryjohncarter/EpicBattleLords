@@ -2,19 +2,17 @@ using UnityEngine;
 
 public abstract class Enemy : Combantant
 {
-    public IHealthController BasicHealthController { get; private set; }
-    private void Awake()
-    {
-        BasicHealthController = GetComponent<IHealthController>();
-    }
+    protected Vector3 _originalPos;
     
     private void Start()
     {
-        UpdateStats();
+        Initialize();
     }
-
-    private void UpdateStats()
+    private void Initialize()
     {
+        Debug.Log($"Setting Enemy AttackPower  to:{CombantantConfig.BaseAttackPower}");
         AttackPower = CombantantConfig.BaseAttackPower;
+        _originalPos = transform.position;
+
     }
 }
