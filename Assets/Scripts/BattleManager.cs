@@ -55,23 +55,6 @@ public class BattleManager : SingletonBehaviour<BattleManager>
     {
         while (true)
         {
-            // if (_isHeroTurn)
-            // {
-            //     //Wait for player  to select a hero to attack
-            //     yield return new WaitUntil(() => _selectedHero != null);
-            //     
-            //     //perfom the attack  with the  selected hero
-            //     yield return HeroAttack(_selectedHero);
-            //
-            //     _selectedHero = null;
-            //     _isHeroTurn = false;
-            // }
-            // else
-            // {
-            //     yield return EnemyAttack();
-            //     _isHeroTurn = true;
-            // }
-
             yield return new WaitUntil(() => _selectedHero != null && _isHeroTurn);
             yield return HeroAttack(_selectedHero);
             _selectedHero = null;

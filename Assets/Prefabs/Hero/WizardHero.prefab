@@ -155,6 +155,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5923067688107182710, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8520002884897725305, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
       propertyPath: m_Name
       value: WizardHero
@@ -192,4 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db1f16c87b62469aa5e086cc5f635c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _combantantTargetPos: {fileID: 0}
   _combantantConfig: {fileID: 11400000, guid: df24e82147e204f06bdf7c9ca0aa2ab8, type: 2}

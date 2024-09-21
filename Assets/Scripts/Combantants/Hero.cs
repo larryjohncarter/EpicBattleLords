@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Hero : Combantant
 {
+   
    public HeroSelection HeroSelection { get; set; }
    public int Level { get; private set; } = 1;
    public int Experience { get; private set; }

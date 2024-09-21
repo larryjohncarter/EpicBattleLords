@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class Combantant : MonoBehaviour
 {
+    [SerializeField] protected Transform _combantantTargetPos;
     [SerializeField] private Combantant_SO _combantantConfig;
 
+   // public Transform
     public Combantant_SO CombantantConfig
     {
         get => _combantantConfig;
