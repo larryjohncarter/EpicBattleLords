@@ -155,6 +155,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5923067688107182710, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 8520002884897725305, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -187,7 +191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbea288945d18a9419caa5ffeb4678da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _combantantTargetPos: {fileID: 4401625314300824643}
   _combantantConfig: {fileID: 11400000, guid: d51de886069d6b24c887720381d24306, type: 2}
+--- !u!4 &4401625314300824643 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5923067688107182710, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
+  m_PrefabInstance: {fileID: 8009441145509479989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8872226651623202682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1443187526809196879, guid: 911ede1b19bd2401da2475cc73b2d45f, type: 3}
