@@ -74,19 +74,16 @@ public class BattleManager : SingletonBehaviour<BattleManager>
 
     IEnumerator HeroAttack(Hero hero)
     {
-        Debug.Log($"{hero.CombantantConfig.Name} attacked the Enemy! :)");
         hero.Attack(_enemyInstance);
         yield return new WaitForSeconds(1f);
     }
 
     IEnumerator EnemyAttack()
     {
-        Debug.Log($"Enemy attacks a  random selected hero");
         var aliveHeroes = _spawnedHeroes.FindAll(x => x.GetComponent<IHealthController>().IsAlive());
         if (aliveHeroes.Count > 0)
         {
             Hero targetHero = aliveHeroes[Random.Range(0, aliveHeroes.Count)];
-            Debug.Log($"Enemy  Attacks: {targetHero.CombantantConfig.Name}");
             yield return new WaitForSeconds(1f);
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectPool : SingletonBehaviour<ObjectPool>
@@ -7,7 +8,7 @@ public class ObjectPool : SingletonBehaviour<ObjectPool>
     [System.Serializable]
     public class Pool
     {
-        public int index;
+        public int id;
         public GameObject prefab;
         public int size;
     }
@@ -28,33 +29,32 @@ public class ObjectPool : SingletonBehaviour<ObjectPool>
                 objectPool.Enqueue(obj);
             }
 
-            _poolDictionary.Add(pool.index, objectPool);
+            _poolDictionary.Add(pool.id, objectPool);
         }
     }
 
-    public GameObject SpawnFromPool(int index, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(int id, Vector3 position, Quaternion rotation)
     {
-        if (!_poolDictionary.ContainsKey(index))
+        if (!_poolDictionary.TryGetValue(id, out var queue))
         {
-            Debug.LogWarning("Pool with index " + index + " doesn't exist.");
+            Debug.LogWarning($"Pool with index {id} doesn't exist.");
             return null;
         }
 
-
-        var queue = _poolDictionary[index];
         var objectToSpawn = queue.Dequeue();
-        if (objectToSpawn == null) return null;
-        if (index == 1 && objectToSpawn.activeSelf)
-        {
-            objectToSpawn = Instantiate(pools[index].prefab);
-            queue.Enqueue(objectToSpawn);
-        }
 
+        if (objectToSpawn.activeSelf || objectToSpawn ==  null)
+        {
+            var pool = pools.SingleOrDefault(x => x.id == id);
+            if (pool != null)
+            {
+                objectToSpawn = Instantiate(pool.prefab);
+                queue.Enqueue(objectToSpawn);
+            }else return null;
+        }
         objectToSpawn.SetActive(true);
         var t = objectToSpawn.transform;
-        t.SetParent(null);
         t.SetPositionAndRotation(position, rotation);
-
         queue.Enqueue(objectToSpawn);
         return objectToSpawn;
     }
