@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e366ffb5064545aa2479e78a75d5f6, type: 3}
   m_Name: Range_Config 2
   m_EditorClassIdentifier: 
-  Name: DeadArrow
+  Name: Zyn Ranger
   MaxHealth: 30
   BaseAttackPower: 5
   BaseLevel: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e366ffb5064545aa2479e78a75d5f6, type: 3}
   m_Name: Warrior_Config 1
   m_EditorClassIdentifier: 
-  Name: Warrior
+  Name: Rok Warrior
   MaxHealth: 75
   BaseAttackPower: 5
   BaseLevel: 1

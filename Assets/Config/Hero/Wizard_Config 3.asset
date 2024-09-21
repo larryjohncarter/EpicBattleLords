@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e366ffb5064545aa2479e78a75d5f6, type: 3}
   m_Name: Wizard_Config 3
   m_EditorClassIdentifier: 
-  Name: Wizzy Wizard
+  Name: Iro Wizard
   MaxHealth: 30
   BaseAttackPower: 50
   BaseLevel: 1
