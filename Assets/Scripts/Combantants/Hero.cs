@@ -6,7 +6,7 @@ public abstract class Hero : Combantant
    public int Level { get; private set; } = 1;
    public int Experience { get; private set; }
    
-   private void Start()
+   public virtual void Start()
    {
       Initialize();
    }

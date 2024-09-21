@@ -14,6 +14,7 @@ public class WarriorHero : Hero
     {
         _animator = GetComponent<Animator>();
         _originalPos = transform.position;
+        base.Start();
     }
     
     public override void Attack(Combantant target)
@@ -24,6 +25,7 @@ public class WarriorHero : Hero
         {
             targetHealthController.TakeDamage((int)AttackPower);
             _animator.SetTrigger(Attack1);
+            TestFloatText(target.transform);
         });
     }
 

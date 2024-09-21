@@ -10,9 +10,7 @@ public abstract class Enemy : Combantant
     }
     private void Initialize()
     {
-        Debug.Log($"Setting Enemy AttackPower  to:{CombantantConfig.BaseAttackPower}");
         AttackPower = CombantantConfig.BaseAttackPower;
         _originalPos = transform.position;
-
     }
 }

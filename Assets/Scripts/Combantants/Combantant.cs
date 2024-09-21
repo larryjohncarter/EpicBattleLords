@@ -18,9 +18,17 @@ public abstract class Combantant : MonoBehaviour
     public float AttackPower { get; protected set; }
 
 
-    public virtual void Attack(Combantant target)
+    public abstract void Attack(Combantant target);
+
+
+    protected void TestFloatText(Transform target)
     {
-        BattleManager.Instance.IsHeroTurn = false;
+        var camera = Locator.Instance.MainCamera;
+        var spawnPos = camera.WorldToScreenPoint(target.position);
+        spawnPos.y += transform.position.y + 3;
+        var floatingTextObj = ObjectPool.Instance.SpawnFromPool(2, spawnPos, Quaternion.identity);
+        var floatingText = floatingTextObj.GetComponent<FloatingTextController>();
+        floatingText.SetFloatText((int)AttackPower);
     }
     
     

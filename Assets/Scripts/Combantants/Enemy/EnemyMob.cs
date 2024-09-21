@@ -14,6 +14,8 @@ public class EnemyMob : Enemy
         {
             targetHealthController.TakeDamage((int)AttackPower);
             StartCoroutine(TempReturnBackToPos());
+            TestFloatText(target.transform);
+
         });
     }
 

@@ -16,8 +16,6 @@ public class RangeHero : Hero
         SpawnAndShootArrow(target.transform, () =>
         {
             targetHealthController.TakeDamage((int)AttackPower);
-            base.Attack(target);
-            
         });
     }
 
@@ -31,6 +29,9 @@ public class RangeHero : Hero
         {
            OnMoveComplete?.Invoke(); 
            arrowObj.SetActive(false);
+           BattleManager.Instance.IsHeroTurn = false;
+           TestFloatText(target.transform);
+
         });
     }
 }

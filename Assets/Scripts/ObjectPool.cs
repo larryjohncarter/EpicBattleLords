@@ -11,6 +11,7 @@ public class ObjectPool : SingletonBehaviour<ObjectPool>
         public int id;
         public GameObject prefab;
         public int size;
+        public Transform parent;
     }
 
     public List<Pool> pools;
@@ -54,6 +55,8 @@ public class ObjectPool : SingletonBehaviour<ObjectPool>
         }
         objectToSpawn.SetActive(true);
         var t = objectToSpawn.transform;
+        var parent = pools.SingleOrDefault(x => x.id == id)?.parent; 
+        t.SetParent(parent != null ? parent :  null);
         t.SetPositionAndRotation(position, rotation);
         queue.Enqueue(objectToSpawn);
         return objectToSpawn;

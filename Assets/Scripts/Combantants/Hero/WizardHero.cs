@@ -21,7 +21,9 @@ public class WizardHero : Hero
             targetHealthController.TakeDamage((int)AttackPower);
             fireBallProjectile.Collision();
             fireBallObj.SetActive(false);
-            base.Attack(target);
+            BattleManager.Instance.IsHeroTurn = false;
+            TestFloatText(target.transform);
+
         });
     }
 }
