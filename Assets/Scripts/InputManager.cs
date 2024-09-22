@@ -50,11 +50,12 @@ public class InputManager : MonoBehaviour
                 if (_heldHero != null)
                 {
                     BattleManager.Instance.SelectHeroForAttack(_heldHero);
+                    _heldHero = null;
                 }
             }
         }
     }
-    private void DetectHeroClick(Vector2? touchPosition = null)
+    private void DetectHeroClick()
     {
         var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

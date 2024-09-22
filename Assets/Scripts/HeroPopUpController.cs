@@ -25,7 +25,8 @@ public class HeroPopUpController : MonoBehaviour
 
         var offset = Locator.Instance.GameSettings.HeroPopUpOffset;
         transform.position = position + offset;
-        GameManager.Instance.GameStates = GameStates.HeroSelection;
+        if(GameManager.Instance.GameStates != GameStates.Playing)
+            GameManager.Instance.GameStates = GameStates.HeroSelection;
     }
 
     public void ToggleOffAfterWhile() => StartCoroutine(ToggleOffAfterWhileCoroutine());
