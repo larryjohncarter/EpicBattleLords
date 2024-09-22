@@ -16,7 +16,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
     private Hero _selectedHero;  // Hero Selected by  player to attack
     private Enemy _enemyInstance;
     private Coroutine _battleFlowCoroutine;
-    private const int XpGain = 6;
+    private const int XpGain = 1;
     public bool IsHeroTurn
     {
         get => _isHeroTurn;
