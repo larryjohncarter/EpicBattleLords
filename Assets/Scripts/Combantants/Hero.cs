@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ public abstract class Hero : Combantant
    {
       get => _isUnlocked;
       set => _isUnlocked = value;
+   }
+
+   private void OnEnable()
+   {
+      ApplicationQuitOrPause.Add(SaveHeroData);
    }
    
    public virtual void Start()
@@ -68,31 +74,6 @@ public abstract class Hero : Combantant
       basicHealthController.Health = ES3.Load($"hero_{CombantantConfig.Name} Health", CombantantConfig.MaxHealth);
       _isUnlocked = ES3.Load($"hero_{CombantantConfig.Name} Is unlocked", false);
    }
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-    void OnApplicationFocus(bool focus)
-    {
-        if (!focus)
-        {
-           SaveHeroData();
-        }
-    }
-#endif
-
-#if UNITY_EDITOR || UNITY_IOS
-   private void OnApplicationPause(bool pause)
-   {
-      if (pause)
-      {
-         SaveHeroData();
-      }
-   }
-
-   private void OnApplicationQuit()
-   {
-      SaveHeroData();
-   }
-#endif
 }
 
 [System.Serializable]

@@ -19,5 +19,7 @@ public static class EventManager
 
    public static event Action<bool> OnBattleEnd;
    public static void InvokeOnBattleEnd(bool state) => OnBattleEnd?.Invoke(state);
-   
+   public static event Action OnResetBattleResult;
+   public static void InvokeOnResetBattleResult() => OnResetBattleResult?.Invoke();
+
 }

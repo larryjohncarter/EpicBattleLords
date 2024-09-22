@@ -41,7 +41,7 @@ public class HeroCollectionUI : MonoBehaviour
 
     private void PopulateHeroButtons()
     {
-        var heroes = _heroCollectionManager.GetAllHeroes();
+        var heroes = _heroCollectionManager.GetAvailableHeroes();
         foreach (var hero in heroes)
         {
             var newHeroButton = Instantiate(_heroPanelPrefab, _heroSelectionPanel);

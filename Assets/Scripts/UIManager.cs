@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
         EventManager.OnTurnChangeTextSet += TurnTextSetter;
         EventManager.OnTurnHudPanelState += TurnHudPanelScale;
         EventManager.OnBattleEnd += TurnOnBattleEndPanel;
+        EventManager.OnResetBattleResult += ResetBattleResultPanel;
     }
 
     private void OnDisable()
@@ -32,15 +33,15 @@ public class UIManager : MonoBehaviour
         EventManager.OnTurnChangeTextSet -= TurnTextSetter;
         EventManager.OnTurnHudPanelState -= TurnHudPanelScale;
         EventManager.OnBattleEnd -= TurnOnBattleEndPanel;
+        EventManager.OnResetBattleResult -= ResetBattleResultPanel;
+
     }
 
     private void Awake()
     {
         SelectedMoreThanRequiredHeroesPanel(false,true);
         TurnHudPanelScale(false,true);
-        _winPanel.DOScale(Vector3.zero, 0);
-        _losePanel.DOScale(Vector3.zero, 0);
-
+        ResetBattleResultPanel();
     }
 
     private void BattleButtonState(bool state)
@@ -81,6 +82,13 @@ public class UIManager : MonoBehaviour
             _losePanel.DOScale(Vector3.one, 0.15f);
             _winPanel.DOScale(Vector3.zero, 0);
         }
+    }
+
+    private void ResetBattleResultPanel()
+    {
+        _winPanel.DOScale(Vector3.zero, 0);
+        _losePanel.DOScale(Vector3.zero, 0);
+
     }
     private void SelectedMoreThanRequiredHeroesPanel(bool on, bool instant = false)
     {

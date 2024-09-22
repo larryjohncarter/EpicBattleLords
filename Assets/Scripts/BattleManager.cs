@@ -23,14 +23,21 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         get => _isHeroTurn;
         set => _isHeroTurn = value;
     }
+
+    private void OnEnable()
+    {
+        ApplicationQuitOrPause.Add(SaveBattleCount);
+    }
+
     void Start()
     {
         _selectedHeroes = HeroCollectionManager.Instance.SelectedHeroes;
-        _battleFlowCoroutine = StartCoroutine(TurnBasedCombat());
+        LoadBattleCount();
     }
     
     public void SpawnCombatants()
     {
+        _battleFlowCoroutine = StartCoroutine(TurnBasedCombat());
         for (var i = 0; i < _selectedHeroes.Count; i++)
         {
             if (i < _heroSpawnPoints.Count)
@@ -45,6 +52,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         _enemyInstance = enemy.GetComponent<EnemyMob>();
         EventManager.InvokeOnBattleInitiated(false);
         EventManager.InvokeOnTurnHudPanelState(true,false);
+        GameManager.Instance.GameStates = GameStates.Playing;
     }
 
     public void SelectHeroForAttack(Hero hero)
@@ -130,8 +138,11 @@ public class BattleManager : SingletonBehaviour<BattleManager>
 
         return allHeroesDefeated;
     }
+
+ 
     private void EndBattle(bool heroesWin)
     {
+        GameManager.Instance.GameStates = GameStates.BattleResult;
         if (heroesWin)
         {
             Debug.Log("Heroes have won the battle!");
@@ -141,8 +152,38 @@ public class BattleManager : SingletonBehaviour<BattleManager>
                 hero.GainXp(XpGain, basicHealthController.IsAlive());
             }
         }
-        EventManager.InvokeOnBattleEnd(heroesWin); // Event to show the Win/Lose panel
 
+        _battleCount++;
+        var heroCollectionManager = HeroCollectionManager.Instance;
+        if (_battleCount % 5 == 0 && heroCollectionManager.GetAvailableHeroes().Count <
+            heroCollectionManager.MaxHeroCollectionHero)
+        {
+            heroCollectionManager.AwardRandomHero();
+        }
+        EventManager.InvokeOnBattleEnd(heroesWin); // Event to show the Win/Lose panel
         StopCoroutine(_battleFlowCoroutine); // Stop the turn-based combat
+    }
+    public void ResetBattleSceneAfterResult()
+    {
+        Destroy(_enemyInstance.gameObject);
+        _enemyInstance = null;
+        foreach (var hero in _spawnedHeroes.ToList())
+        {
+            Destroy(hero.gameObject);
+            _spawnedHeroes.Remove(hero);
+        }
+        EventManager.InvokeOnTurnHudPanelState(false,true);
+        EventManager.InvokeOnBattleInitiated(true);
+        EventManager.InvokeOnResetBattleResult();
+    }
+
+    private void SaveBattleCount()
+    {
+        ES3.Save("BattleCount",_battleCount);
+    }
+
+    private void LoadBattleCount()
+    {
+        _battleCount = ES3.Load("BattleCount", _battleCount);
     }
 }
