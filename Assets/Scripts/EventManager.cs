@@ -16,4 +16,8 @@ public static class EventManager
 
    public static event Action<bool,bool> OnTurnHudPanelState;
    public static void InvokeOnTurnHudPanelState(bool state, bool instant) => OnTurnHudPanelState?.Invoke(state,instant);
+
+   public static event Action<bool> OnBattleEnd;
+   public static void InvokeOnBattleEnd(bool state) => OnBattleEnd?.Invoke(state);
+   
 }

@@ -17,6 +17,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
     private Enemy _enemyInstance;
     private Coroutine _battleFlowCoroutine;
     private const int XpGain = 1;
+    private int _battleCount;
     public bool IsHeroTurn
     {
         get => _isHeroTurn;
@@ -147,6 +148,8 @@ public class BattleManager : SingletonBehaviour<BattleManager>
             Debug.Log("Heroes have lost the battle.");
             // Handle lose condition (show UI, game over, etc.)
         }
+        EventManager.InvokeOnBattleEnd(heroesWin);
+
 
         StopCoroutine(_battleFlowCoroutine); // Stop the turn-based combat
     }

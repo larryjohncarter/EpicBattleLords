@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Vector3 = UnityEngine.Vector3;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,12 +14,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform _selectedMoreThanRequiredHeroesPanel;
     [SerializeField] private TextMeshProUGUI _playerOrEnemyTurnText;
     [SerializeField] private GameObject _turnHudPanelObj;
+    [SerializeField] private Transform _winPanel;
+    [SerializeField] private Transform _losePanel;
     private void OnEnable()
     {
         EventManager.OnHeroSelected += BattleButtonState;
         EventManager.OnHeroSelectionMaxAmount += ShowHeroRequiredPanel;
         EventManager.OnTurnChangeTextSet += TurnTextSetter;
         EventManager.OnTurnHudPanelState += TurnHudPanelScale;
+        EventManager.OnBattleEnd += TurnOnBattleEndPanel;
     }
 
     private void OnDisable()
@@ -26,12 +31,16 @@ public class UIManager : MonoBehaviour
         EventManager.OnHeroSelectionMaxAmount -= ShowHeroRequiredPanel;
         EventManager.OnTurnChangeTextSet -= TurnTextSetter;
         EventManager.OnTurnHudPanelState -= TurnHudPanelScale;
+        EventManager.OnBattleEnd -= TurnOnBattleEndPanel;
     }
 
     private void Awake()
     {
         SelectedMoreThanRequiredHeroesPanel(false,true);
         TurnHudPanelScale(false,true);
+        _winPanel.DOScale(Vector3.zero, 0);
+        _losePanel.DOScale(Vector3.zero, 0);
+
     }
 
     private void BattleButtonState(bool state)
@@ -58,6 +67,20 @@ public class UIManager : MonoBehaviour
     private void TurnHudPanelScale(bool on, bool instant = false)
     {
         Toggle(_turnHudPanelObj.transform,on,instant);
+    }
+
+    private void TurnOnBattleEndPanel(bool hasWon)
+    {
+        if (hasWon)
+        {
+            _winPanel.DOScale(Vector3.one, 0.15f);
+            _losePanel.DOScale(Vector3.zero, 0);
+        }
+        else
+        {
+            _losePanel.DOScale(Vector3.one, 0.15f);
+            _winPanel.DOScale(Vector3.zero, 0);
+        }
     }
     private void SelectedMoreThanRequiredHeroesPanel(bool on, bool instant = false)
     {
