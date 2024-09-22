@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HeroButton : MonoBehaviour
 {
@@ -21,8 +22,11 @@ public class HeroButton : MonoBehaviour
         if (GameManager.Instance.GameStates != GameStates.HeroSelection) return;
         if (Input.GetMouseButtonDown(0))
         {
-            _isHolding = true;
-            _holdTime = 0f;  // Reset hold time
+            if (IsPointerOverUIElemants())
+            {
+                _isHolding = true;
+                _holdTime = 0f;  // Reset hold time
+            }
         }
         if (Input.GetMouseButton(0) && _isHolding)
         {
@@ -31,6 +35,7 @@ public class HeroButton : MonoBehaviour
             {
                 ShowHeroPopUpAtMousePosition();
                 _isHolding = false;
+                _holdTime = 0f;
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -41,15 +46,39 @@ public class HeroButton : MonoBehaviour
                 _heroPopUpController.ToggleOffAfterWhile();
         }
     }
+
+    private bool IsPointerOverUIElemants()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;  // Use touch position in mobile
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        EventSystem.current.RaycastAll(eventData, results);
+        foreach (RaycastResult result in results)
+        {
+            var heroButton = result.gameObject.GetComponent<HeroPanelUIController>();
+            if (heroButton)  // Check if the UI element has a "HeroButton" tag
+            {
+                FillHeroPopUpInfo(heroButton.Hero);
+                return true;  // We are over a button
+            }
+        }
+        return false;  // No UI element was detected
+    }
     
     private void ShowHeroPopUpAtMousePosition()
     {
         if (_heroPopUpController != null)
         {
-            Vector3 mousePosition = Input.mousePosition;
-            _heroPopUpController.SetHeroInfo(_heroPanelUIController.Combantant,_heroPanelUIController.Hero,mousePosition);
             _heroPopUpController.Toggle(true); 
+        }
+    }
 
+    private void FillHeroPopUpInfo(Hero hero)
+    {
+        if (_heroPopUpController != null)
+        {
+            _heroPopUpController.SetHeroInfo(hero.CombantantConfig,hero,Input.mousePosition);
         }
     }
 }

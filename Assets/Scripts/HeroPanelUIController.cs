@@ -25,7 +25,6 @@ public class HeroPanelUIController : MonoBehaviour
     private void OnDisable()
     {
         OnHeroSelection -= SetImageBorderColor;
- 
     }
 
     public void SetNameText(string name)
