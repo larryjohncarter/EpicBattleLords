@@ -8,5 +8,6 @@ public class MainMenuManager : MonoBehaviour
     public void OpenGameScene()
     {
         SceneManager.LoadScene("Game");
+        GameManager.Instance.GameStates = GameStates.HeroSelection;
     }
 }

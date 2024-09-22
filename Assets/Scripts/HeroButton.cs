@@ -18,7 +18,14 @@ public class HeroButton : MonoBehaviour
 
     void Update()
     {
-        if (_isHolding)
+        if (GameManager.Instance.GameStates != GameStates.HeroSelection) return;
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log($"1");
+            _isHolding = true;
+            _holdTime = 0f;  // Reset hold time
+        }
+        if (Input.GetMouseButton(0) && _isHolding)
         {
             _holdTime += Time.deltaTime;
             if (_holdTime >= _holdDuration)
@@ -27,22 +34,15 @@ public class HeroButton : MonoBehaviour
                 _isHolding = false;
             }
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            _isHolding = false;
+            _holdTime = 0f;
+            if (_heroPopUpController != null)
+                _heroPopUpController.ToggleOffAfterWhile();
+        }
     }
-    public void OnPointerDown()
-    {
-        _isHolding = true;
-        _holdTime = 0f;  // Reset hold time
-    }
-
-    // Method called when the player releases the button
-    public void OnPointerUp()
-    {
-        _isHolding = false;
-        _holdTime = 0f;
-        if (_heroPopUpController != null)
-            _heroPopUpController.ToggleOffAfterWhile();
-    }
-
+    
     private void ShowHeroPopUpAtMousePosition()
     {
         if (_heroPopUpController != null)
