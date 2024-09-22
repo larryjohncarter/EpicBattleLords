@@ -151,7 +151,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         }
         _battleCount++;
         var heroCollectionManager = HeroCollectionManager.Instance;
-        if (_battleCount % 1 == 0 && heroCollectionManager.GetAvailableHeroes().Count <
+        if (_battleCount % 5 == 0 && heroCollectionManager.GetAvailableHeroes().Count <
             heroCollectionManager.MaxHeroCollectionHero)
         {
             heroCollectionManager.AwardRandomHero();
