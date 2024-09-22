@@ -38,7 +38,7 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
         if (_selectedHeroes.Count < 3 && _allHeroes.Contains(hero) && !_selectedHeroes.Contains(hero))
         {
             _selectedHeroes.Add(hero);
-            hero.HeroSelection.IsSelected = true;
+            hero.IsSelected = true;
             HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
             EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
         }
@@ -53,7 +53,7 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
         if (_selectedHeroes.Contains(hero))
         {
             _selectedHeroes.Remove(hero);
-            hero.HeroSelection.IsSelected = false;
+            hero.IsSelected = false;
             HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
             EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
 
@@ -64,7 +64,7 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
     {
         foreach (var hero in _selectedHeroes)
         {
-            hero.HeroSelection.IsSelected = false;
+            hero.IsSelected = false;
         }
 
         _selectedHeroes.Clear();

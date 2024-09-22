@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Hero : Combantant
 {
    [SerializeField] private bool _isUnlocked;
-   public HeroSelection HeroSelection { get; set; }
+   public bool IsSelected { get; set; }
    public int Level { get; private set; } = 1;
    public int Experience { get; private set; }
 
@@ -75,10 +75,4 @@ public abstract class Hero : Combantant
       basicHealthController.Health = ES3.Load($"hero_{CombantantConfig.Name} Health", CombantantConfig.MaxHealth);
       Experience = ES3.Load($"hero_{CombantantConfig.Name} experience", 0);
    }
-}
-
-[System.Serializable]
-public class HeroSelection
-{
-   [System.NonSerialized]  public bool IsSelected;  
 }

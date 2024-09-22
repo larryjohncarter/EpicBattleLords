@@ -49,10 +49,8 @@ public class HeroCollectionUI : MonoBehaviour
             heroPanelUIController.SetCombantant(hero);
             heroPanelUIController.SetHero(hero);
             if(!_alreadySpawnedHeroButton.Contains(hero))  _alreadySpawnedHeroButton.Add(hero);
-            if (hero.IsUnlocked)
-            {
+            if(hero.IsUnlocked)
                 heroPanelUIController.SetButtonListener(()=>ToggleHeroSelection(hero));
-            }
         }
     }
 
@@ -69,10 +67,8 @@ public class HeroCollectionUI : MonoBehaviour
             heroPanelUIController.SetCombantant(hero);
             heroPanelUIController.SetHero(hero);
             _alreadySpawnedHeroButton.Add(hero);
-            if (hero.IsUnlocked)
-            {
+            if(hero.IsUnlocked)
                 heroPanelUIController.SetButtonListener(()=>ToggleHeroSelection(hero));
-            }
         }
     }
 
@@ -93,13 +89,16 @@ public class HeroCollectionUI : MonoBehaviour
 
     private void ToggleHeroSelection(Hero hero)
     {
-        if (hero.HeroSelection.IsSelected)
+        Debug.Log($"1");
+        if (hero.IsSelected)
         {
+            Debug.Log($"2");
             _heroCollectionManager.DeselectHeroFromBattle(hero);
             HeroPanelUIController.OnHeroSelection.Invoke();
         }
         else
         {
+            Debug.Log($"3");
             _heroCollectionManager.SelectHeroForBattle(hero);
             HeroPanelUIController.OnHeroSelection.Invoke();
         }
