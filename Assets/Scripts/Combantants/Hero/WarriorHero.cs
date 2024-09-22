@@ -25,7 +25,7 @@ public class WarriorHero : Hero
         {
             targetHealthController.TakeDamage((int)AttackPower);
             _animator.SetTrigger(Attack1);
-            TestFloatText(target.transform);
+            DamageFloatText(target.transform);
         });
     }
 

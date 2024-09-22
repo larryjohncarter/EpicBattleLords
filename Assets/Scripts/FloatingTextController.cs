@@ -10,8 +10,11 @@ public class FloatingTextController : MonoBehaviour
 
     [SerializeField] private float _moveAmount = 1;
    
-    public void SetFloatText(int amount) => _text.text = amount.ToString();
-
+    public void SetDamageText(int amount) => _text.text = amount.ToString();
+    public void SetXpGainedText(int amount)
+    {
+        _text.text = $"+{amount} xp";
+    }
     private void OnEnable()
     {
         ResetCache();

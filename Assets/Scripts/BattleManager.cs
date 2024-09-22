@@ -16,7 +16,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
     private Hero _selectedHero;  // Hero Selected by  player to attack
     private Enemy _enemyInstance;
     private Coroutine _battleFlowCoroutine;
-
+    private const int XpGain = 6;
     public bool IsHeroTurn
     {
         get => _isHeroTurn;
@@ -88,6 +88,10 @@ public class BattleManager : SingletonBehaviour<BattleManager>
 
     IEnumerator EnemyAttack()
     {
+        var basicHealthController = _enemyInstance.GetComponent<IHealthController>();
+        if (!basicHealthController.IsAlive())
+            yield break;
+        
         var aliveHeroes = _spawnedHeroes.FindAll(x => x.GetComponent<IHealthController>().IsAlive());
         if (aliveHeroes.Count > 0)
         {
@@ -130,6 +134,12 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         if (heroesWin)
         {
             Debug.Log("Heroes have won the battle!");
+            foreach (var hero in _spawnedHeroes)
+            {
+                var basicHealthController = hero.GetComponent<IHealthController>();
+                hero.GainXp(XpGain, basicHealthController.IsAlive());
+            }
+            //TODO: Show  Win UI
             // Handle win condition (show UI, rewards, etc.)
         }
         else

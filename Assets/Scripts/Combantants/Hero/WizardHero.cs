@@ -22,7 +22,7 @@ public class WizardHero : Hero
             fireBallProjectile.Collision();
             fireBallObj.SetActive(false);
             BattleManager.Instance.IsHeroTurn = false;
-            TestFloatText(target.transform);
+            DamageFloatText(target.transform);
 
         });
     }

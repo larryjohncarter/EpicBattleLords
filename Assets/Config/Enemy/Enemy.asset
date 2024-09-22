@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   Name: THE BOSS
-  MaxHealth: 250
+  MaxHealth: 50
   BaseAttackPower: 50
   BaseLevel: 0
   IsUnlocked: 0

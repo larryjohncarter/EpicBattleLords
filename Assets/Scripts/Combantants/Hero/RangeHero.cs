@@ -30,7 +30,7 @@ public class RangeHero : Hero
            OnMoveComplete?.Invoke(); 
            arrowObj.SetActive(false);
            BattleManager.Instance.IsHeroTurn = false;
-           TestFloatText(target.transform);
+           DamageFloatText(target.transform);
 
         });
     }

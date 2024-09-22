@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Hero : Combantant
@@ -13,12 +14,15 @@ public abstract class Hero : Combantant
    
    public void Initialize()
    {
+      Name = CombantantConfig.Name;
       Level = CombantantConfig.BaseLevel;
       AttackPower = CombantantConfig.BaseAttackPower;
    }
-   public void GainXp(int xp)
+   public void GainXp(int xp, bool isAlive)
    {
+      if (!isAlive) return;
       Experience += xp;
+      XpGainText(xp);
       if (Experience >= 5)
       {
          LevelUp();
@@ -26,12 +30,22 @@ public abstract class Hero : Combantant
       }
    }
 
+   private void XpGainText(int amount)
+   {
+      var camera = Locator.Instance.MainCamera;
+      var spawnPos = camera.WorldToScreenPoint(transform.position);
+      spawnPos.y += transform.position.y + 3;
+      var floatingTextObj = ObjectPool.Instance.SpawnFromPool(2, spawnPos, Quaternion.identity);
+      var floatingText = floatingTextObj.GetComponent<FloatingTextController>();
+      floatingText.SetXpGainedText(amount);
+   }
+
    private void LevelUp()
    {
+      var basicHealthController = GetComponent<IHealthController>();
       Level++;
-    //  Health *= 1.1f;
+      basicHealthController.MaxHealth *= 1.1f;
       AttackPower = CombantantConfig.BaseAttackPower * (1 + (Level * 0.1f));  //10% bonus per level
-      Debug.Log($"{Name } Leveled Up");
    }
 }
 

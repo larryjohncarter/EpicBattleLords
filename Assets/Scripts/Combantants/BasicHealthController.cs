@@ -50,15 +50,17 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     {
         if (!IsAlive())
         {
-            Debug.Log($"{_combantant.Name} has died! :( sad times!!! ");
-            //TODO: Play a fake death animation
+            transform.DOScale(Vector3.zero, 0.15f);
         }
     }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        if (Health < 0) Health = 0;
+        if (Health < 0)
+        {
+            Health = 0;
+        }
     }
 
     public bool IsAlive()
@@ -69,6 +71,11 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     private void HealthBar()
     {
         var percentage = Health / MaxHealth;
-        _healthBarImage.DOFillAmount(percentage, 0.5f);
+        _healthBarImage.DOFillAmount(percentage, 0.5f).OnComplete(() =>
+        {
+            if(percentage  <= 0)
+                Die();
+        });
+       
     }
 }
