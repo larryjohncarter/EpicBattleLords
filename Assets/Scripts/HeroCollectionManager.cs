@@ -27,10 +27,19 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
 
     private void Start()
     {
+        ResetHeroIsSelected();
         _heroCollectionUI = GetComponent<HeroCollectionUI>();
        HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
        EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
        
+    }
+
+    private void ResetHeroIsSelected()
+    {
+        foreach (var hero in GetAvailableHeroes())
+        {
+            hero.IsSelected = false;
+        }
     }
 
     public void SelectHeroForBattle(Hero hero)
@@ -62,15 +71,10 @@ public class HeroCollectionManager : SingletonBehaviour<HeroCollectionManager>
 
     public void ResetSelectedHeroes()
     {
-        foreach (var hero in _selectedHeroes)
-        {
-            hero.IsSelected = false;
-        }
-
+        ResetHeroIsSelected();
         _selectedHeroes.Clear();
         HeroCollectionUI.OnHeroAmountChange.Invoke(_selectedHeroes.Count,Locator.Instance.GameSettings.MaxSelectedHeroAmount);
         HeroPanelUIController.OnHeroSelection.Invoke();
-
     }
 
     public void AwardRandomHero()

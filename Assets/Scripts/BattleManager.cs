@@ -173,6 +173,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         EventManager.InvokeOnResetBattleResult();
         _isHeroTurn = true;
         UpdateTurnText();
+        GameManager.Instance.GameStates = GameStates.HeroSelection;
     }
 
     private void SaveBattleCount()
