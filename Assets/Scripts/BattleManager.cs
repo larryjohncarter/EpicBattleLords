@@ -53,6 +53,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         EventManager.InvokeOnBattleInitiated(false);
         EventManager.InvokeOnTurnHudPanelState(true,false);
         GameManager.Instance.GameStates = GameStates.Playing;
+        HeroCollectionManager.Instance.ResetSelectedHeroes();
     }
 
     public void SelectHeroForAttack(Hero hero)
@@ -131,31 +132,26 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         var enemyHealthController = _enemyInstance.GetComponent<IHealthController>();
         if (!enemyHealthController.IsAlive())
         {
-            Debug.Log("Enemy has died! Heroes Win!");
             EndBattle(true);
             return true;
         }
-
         return allHeroesDefeated;
     }
-
- 
+    
     private void EndBattle(bool heroesWin)
     {
         GameManager.Instance.GameStates = GameStates.BattleResult;
         if (heroesWin)
         {
-            Debug.Log("Heroes have won the battle!");
             foreach (var hero in _spawnedHeroes)
             {
                 var basicHealthController = hero.GetComponent<IHealthController>();
                 hero.GainXp(XpGain, basicHealthController.IsAlive());
             }
         }
-
         _battleCount++;
         var heroCollectionManager = HeroCollectionManager.Instance;
-        if (_battleCount % 5 == 0 && heroCollectionManager.GetAvailableHeroes().Count <
+        if (_battleCount % 1 == 0 && heroCollectionManager.GetAvailableHeroes().Count <
             heroCollectionManager.MaxHeroCollectionHero)
         {
             heroCollectionManager.AwardRandomHero();
@@ -175,6 +171,8 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         EventManager.InvokeOnTurnHudPanelState(false,true);
         EventManager.InvokeOnBattleInitiated(true);
         EventManager.InvokeOnResetBattleResult();
+        _isHeroTurn = true;
+        UpdateTurnText();
     }
 
     private void SaveBattleCount()

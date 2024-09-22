@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combantantTargetPos: {fileID: 2464843031151537780}
   _combantantConfig: {fileID: 11400000, guid: e9118754c67dfb94089634c5d570739d, type: 2}
+  _isUnlocked: 0
 --- !u!95 &8559052515716365646
 Animator:
   serializedVersion: 5

@@ -16,5 +16,5 @@ MonoBehaviour:
   MaxHealth: 75
   BaseAttackPower: 5
   BaseLevel: 1
-  IsUnlocked: 1
+  DefaultIsUnlocked: 1
   ModelPrefab: {fileID: 449012480492617595, guid: 5f06554456b884d9db1b7de0bf7406c7, type: 3}

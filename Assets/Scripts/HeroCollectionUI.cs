@@ -14,7 +14,7 @@ public class HeroCollectionUI : MonoBehaviour
     private HeroCollectionManager _heroCollectionManager;
 
     public static Action<int,int> OnHeroAmountChange;
-    
+    private List<Hero> _alreadySpawnedHeroButton = new();
     private void OnEnable()
     {
         OnHeroAmountChange += SelectedHeroAmount;
@@ -36,11 +36,11 @@ public class HeroCollectionUI : MonoBehaviour
     void Start()
     {
         PopulateHeroButtons();
-        
     }
 
     private void PopulateHeroButtons()
     {
+        Debug.Log($"hey");
         var heroes = _heroCollectionManager.GetAvailableHeroes();
         foreach (var hero in heroes)
         {
@@ -49,12 +49,31 @@ public class HeroCollectionUI : MonoBehaviour
             heroPanelUIController.SetNameText(hero.CombantantConfig.Name);
             heroPanelUIController.SetCombantant(hero);
             heroPanelUIController.SetHero(hero);
+            if(!_alreadySpawnedHeroButton.Contains(hero))  _alreadySpawnedHeroButton.Add(hero);
             if (hero.IsUnlocked)
             {
                 heroPanelUIController.SetButtonListener(()=>ToggleHeroSelection(hero));
             }
-            else
-                heroPanelUIController.Button.interactable = false;
+        }
+    }
+
+    public void RepopulateHeroButtons()
+    {
+        var heroes = _heroCollectionManager.GetAvailableHeroes();
+        foreach (var hero in heroes)
+        {
+            if (_alreadySpawnedHeroButton.Contains(hero))
+                continue;
+            var newHeroButton = Instantiate(_heroPanelPrefab, _heroSelectionPanel);
+            var heroPanelUIController = newHeroButton.GetComponent<HeroPanelUIController>();
+            heroPanelUIController.SetNameText(hero.CombantantConfig.Name);
+            heroPanelUIController.SetCombantant(hero);
+            heroPanelUIController.SetHero(hero);
+            _alreadySpawnedHeroButton.Add(hero);
+            if (hero.IsUnlocked)
+            {
+                heroPanelUIController.SetButtonListener(()=>ToggleHeroSelection(hero));
+            }
         }
     }
 

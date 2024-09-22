@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combantantTargetPos: {fileID: 4344046890918920843}
   _combantantConfig: {fileID: 11400000, guid: 733856b48520f4a9c847798ece67a0ea, type: 2}
-  _isUnlocked: 1
+  _isUnlocked: 0
   _arrowSpawnPos: {fileID: 3281789557931740525}
 --- !u!4 &4344046890918920843 stripped
 Transform:
