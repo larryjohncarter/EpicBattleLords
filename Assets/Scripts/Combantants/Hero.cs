@@ -38,6 +38,7 @@ public abstract class Hero : Combantant
       }
       var basicHealthController = GetComponent<IHealthController>(); //TODO:  bugged, the save system saves  this but if the  player leaves after getting to the hero  selection panel, it will give an missing reference exception
       ES3.Save($"hero_{CombantantConfig.Name} Health", basicHealthController.Health);
+      SaveHeroData();
    }
 
    private void XpGainText(int amount)
@@ -62,7 +63,7 @@ public abstract class Hero : Combantant
    {
       ES3.Save($"hero_{CombantantConfig.Name} Level", Level);
       ES3.Save($"hero_{CombantantConfig.Name} attackPower", AttackPower);
-      ES3.Save($"hero_{CombantantConfig.Name} Is unlocked", _isUnlocked);
+      ES3.Save($"hero_{CombantantConfig.Name} experience", Experience);
    }
 
    public void LoadHeroData()
@@ -72,7 +73,7 @@ public abstract class Hero : Combantant
       AttackPower  =  ES3.Load($"hero_{CombantantConfig.Name} attackPower", CombantantConfig.BaseAttackPower);
       var basicHealthController = GetComponent<IHealthController>();
       basicHealthController.Health = ES3.Load($"hero_{CombantantConfig.Name} Health", CombantantConfig.MaxHealth);
-      _isUnlocked = ES3.Load($"hero_{CombantantConfig.Name} Is unlocked", false);
+      Experience = ES3.Load($"hero_{CombantantConfig.Name} experience", 0);
    }
 }
 

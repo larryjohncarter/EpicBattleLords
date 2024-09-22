@@ -40,7 +40,6 @@ public class HeroCollectionUI : MonoBehaviour
 
     private void PopulateHeroButtons()
     {
-        Debug.Log($"hey");
         var heroes = _heroCollectionManager.GetAvailableHeroes();
         foreach (var hero in heroes)
         {

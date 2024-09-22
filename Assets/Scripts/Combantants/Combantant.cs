@@ -16,11 +16,9 @@ public abstract class Combantant : MonoBehaviour
     public Transform CombantantTargetPos => _combantantTargetPos;
     public string Name { get; protected set; }
     public float AttackPower { get; protected set; }
-
-
+    
     public abstract void Attack(Combantant target);
-
-
+    
     protected void DamageFloatText(Transform target)
     {
         var camera = Locator.Instance.MainCamera;
