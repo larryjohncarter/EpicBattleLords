@@ -237,4 +237,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combantantTargetPos: {fileID: 6463788493256651164}
   _combantantConfig: {fileID: 11400000, guid: df24e82147e204f06bdf7c9ca0aa2ab8, type: 2}
+  _isUnlocked: 1
   _spellSpawnPos: {fileID: 8126457324595966557}

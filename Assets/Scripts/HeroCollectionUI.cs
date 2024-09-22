@@ -49,7 +49,7 @@ public class HeroCollectionUI : MonoBehaviour
             heroPanelUIController.SetNameText(hero.CombantantConfig.Name);
             heroPanelUIController.SetCombantant(hero);
             heroPanelUIController.SetHero(hero);
-            if (hero.CombantantConfig.IsUnlocked)
+            if (hero.IsUnlocked)
             {
                 heroPanelUIController.SetButtonListener(()=>ToggleHeroSelection(hero));
             }

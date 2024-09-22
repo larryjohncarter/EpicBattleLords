@@ -20,6 +20,7 @@ public abstract class SingletonBehaviour<T> : SingletonBehaviour where T : Singl
         }
         else if( this != Instance )
             Destroy( this );
+        DontDestroyOnLoad(this);
     }
 
     protected virtual void OnDestroy()

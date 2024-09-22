@@ -15,13 +15,7 @@ public class BasicHealthController : MonoBehaviour, IHealthController
     public float Health
     {
         get => health;
-        set
-        {
-            health = value;
-            //TODO:Set HealthBar percentages  here
-            HealthBar();
-            
-        }
+        set => health = value;
     }
 
     public float MaxHealth
@@ -61,6 +55,8 @@ public class BasicHealthController : MonoBehaviour, IHealthController
         {
             Health = 0;
         }
+        HealthBar();
+
     }
 
     public bool IsAlive()

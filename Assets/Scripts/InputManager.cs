@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameStates != GameStates.Playing)
+            return;
         if (Input.GetMouseButtonDown(0))
         {
             DetectHeroClick();

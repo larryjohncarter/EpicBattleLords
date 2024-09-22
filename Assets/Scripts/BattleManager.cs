@@ -140,16 +140,8 @@ public class BattleManager : SingletonBehaviour<BattleManager>
                 var basicHealthController = hero.GetComponent<IHealthController>();
                 hero.GainXp(XpGain, basicHealthController.IsAlive());
             }
-            //TODO: Show  Win UI
-            // Handle win condition (show UI, rewards, etc.)
         }
-        else
-        {
-            Debug.Log("Heroes have lost the battle.");
-            // Handle lose condition (show UI, game over, etc.)
-        }
-        EventManager.InvokeOnBattleEnd(heroesWin);
-
+        EventManager.InvokeOnBattleEnd(heroesWin); // Event to show the Win/Lose panel
 
         StopCoroutine(_battleFlowCoroutine); // Stop the turn-based combat
     }

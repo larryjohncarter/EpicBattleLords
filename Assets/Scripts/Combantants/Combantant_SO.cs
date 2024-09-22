@@ -8,8 +8,6 @@ public class Combantant_SO : ScriptableObject
     public float MaxHealth;
     public float BaseAttackPower;
     public int BaseLevel;
-    [Header("Selections")]
-    public bool IsUnlocked;
     [Header("Prefab")] 
     public GameObject ModelPrefab;
 }
