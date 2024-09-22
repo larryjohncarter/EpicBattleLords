@@ -171,6 +171,7 @@ public class BattleManager : SingletonBehaviour<BattleManager>
         EventManager.InvokeOnTurnHudPanelState(false,true);
         EventManager.InvokeOnBattleInitiated(true);
         EventManager.InvokeOnResetBattleResult();
+        EventManager.InvokeOnHeroSelected(_selectedHeroes.Count == 3);
         _isHeroTurn = true;
         UpdateTurnText();
         GameManager.Instance.GameStates = GameStates.HeroSelection;
