@@ -21,7 +21,6 @@ public class HeroButton : MonoBehaviour
         if (GameManager.Instance.GameStates != GameStates.HeroSelection) return;
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log($"1");
             _isHolding = true;
             _holdTime = 0f;  // Reset hold time
         }

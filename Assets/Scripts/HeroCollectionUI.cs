@@ -89,16 +89,13 @@ public class HeroCollectionUI : MonoBehaviour
 
     private void ToggleHeroSelection(Hero hero)
     {
-        Debug.Log($"1");
         if (hero.IsSelected)
         {
-            Debug.Log($"2");
             _heroCollectionManager.DeselectHeroFromBattle(hero);
             HeroPanelUIController.OnHeroSelection.Invoke();
         }
         else
         {
-            Debug.Log($"3");
             _heroCollectionManager.SelectHeroForBattle(hero);
             HeroPanelUIController.OnHeroSelection.Invoke();
         }
