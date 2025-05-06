@@ -55,5 +55,9 @@ Designers can clone and tweak SO assets—health, damage, cooldowns—to create 
 Loose Coupling via Events
 
 Combat events dispatch UnityEvents for UI updates (floating text), audio, screen shake, etc., allowing new feedback features to plug in cleanly.
-https://github.com/user-attachments/assets/37e20d56-ef1e-4d1e-9c96-2e5ba140c51a
+
+
+
+https://github.com/user-attachments/assets/50abf480-2840-483f-8666-98f615f62895
+
 
